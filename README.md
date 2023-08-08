@@ -37,10 +37,10 @@ I would like to give a special thanks to [Martindev (@naarikdev)](https://www.fi
 ## Support and Funding
 
 If you find this plugin helpful and would like to support further development and improvements, you can contribute to the project by providing financial support. We accept various forms of payment to accommodate different preferences. You can contribute through the following methods:
-
-- https://ko-fi.com/sagedrada
 - Bitcoin: `38j6KSoptdWFreEtmbo6APVLXWkfd6BWgu`
 - Ethereum: `0x5325Fc057bbdD48d6722a176EBB9A0ebdF060EAD`
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A0NZAIL)
 
 Your contributions will help us continue to enhance the plugin, fix bugs, and add more exciting features in the future.
 
