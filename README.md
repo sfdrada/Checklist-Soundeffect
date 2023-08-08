@@ -44,4 +44,4 @@ If you find this plugin helpful and would like to support further development an
 
 Your contributions will help us continue to enhance the plugin, fix bugs, and add more exciting features in the future.
 
-Thank you for using Checkbox-Soundeffect! Happy note-taking and task management with a touch of fun!
+Thank you for using Checkbox-Soundeffect! Happy note-taking and task management with a touch of fun :)
