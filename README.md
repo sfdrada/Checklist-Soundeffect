@@ -38,9 +38,9 @@ I would like to give a special thanks to [Martindev (@naarikdev)](https://www.fi
 
 If you find this plugin helpful and would like to support further development and improvements, you can contribute to the project by providing financial support. We accept various forms of payment to accommodate different preferences. You can contribute through the following methods:
 
-- PayPal: [your-paypal-email@example.com](mailto:your-paypal-email@example.com)
-- Bitcoin: `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`
-- Ethereum: `0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B`
+- https://ko-fi.com/sagedrada
+- Bitcoin: `38j6KSoptdWFreEtmbo6APVLXWkfd6BWgu`
+- Ethereum: `0x5325Fc057bbdD48d6722a176EBB9A0ebdF060EAD`
 
 Your contributions will help us continue to enhance the plugin, fix bugs, and add more exciting features in the future.
 
