@@ -6,6 +6,13 @@ https://github.com/sfdrada/Checklist-Soundeffect/assets/79337513/19c20384-f3ef-4
 
 Checkbox-Soundeffect is an Obsidian plugin that enhances your checkbox experience by playing a sound whenever you click a checkbox. Make your note-taking and task management more engaging with this interactive sound feature.
 
+## Supported Checklist Formats
+The Checkbox-Soundeffect plugin currently supports the following checklist formats:
+
+- Standard checkboxes
+- Checkboxes in a numbered list
+
+
 ## Setup
 
 To use the Checkbox-Soundeffect plugin, follow these steps:
