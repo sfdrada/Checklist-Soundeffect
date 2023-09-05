@@ -12,14 +12,6 @@ The Checkbox-Soundeffect plugin currently supports the following checklist forma
 - Checkboxes in a numbered list
 - Inline boolean values & checklists when combined with the Better Inline Fields plugin
 
-## Plugin Integration: Better Inline Fields
-
-The Checkbox-Soundeffect plugin can integrate with the "Better Inline Fields" plugin to provide an even more immersive note-taking experience. Specifically, the checklists option in this plugin can have its own audio file and sound setup. 
-**How to Enable Integration**
-
-1. Make sure both the Checkbox-Soundeffect and Better Inline Fields plugins are installed and enabled.
-2. Update your audio file link for Inline Toggle Audio in the plugin settings.
-
 ## Setup
 
 To use the Checkbox-Soundeffect plugin, follow these steps:
@@ -43,6 +35,14 @@ To use the Checkbox-Soundeffect plugin, follow these steps:
    - Save the changes.
 
 Now you're all set! Every time you click a checkbox in your Obsidian notes, you'll hear the sound effect you selected.
+
+## Plugin Integration: Better Inline Fields
+
+The Checkbox-Soundeffect plugin can integrate with the "Better Inline Fields" plugin to provide an even more immersive note-taking experience. Specifically, the checklists option in this plugin can have its own audio file and sound setup. 
+**How to Enable Integration**
+
+1. Make sure both the Checkbox-Soundeffect and Better Inline Fields plugins are installed and enabled.
+2. Update your audio file link for Inline Toggle Audio in the plugin settings.
 
 ## Credits
 
