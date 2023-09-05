@@ -1,3 +1,6 @@
 {
-  "audioURL": "https://cdn.discordapp.com/attachments/718508936185118810/1137813613873209425/success.mp3"
+  "audioURL": "https://cdn.discordapp.com/attachments/718508936185118810/1137813613873209425/success.mp3",
+  "inlineAudioURL": "https://cdn.discordapp.com/attachments/718508936185118810/1137813613873209425/success.mp3",
+  "checkboxVolume": 1,
+  "inlineVolume": 1
 }

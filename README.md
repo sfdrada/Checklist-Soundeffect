@@ -1,17 +1,28 @@
-
-
 https://github.com/sfdrada/Checklist-Soundeffect/assets/79337513/19c20384-f3ef-4d3d-8712-555596c792d8
 
 # Checkbox-Soundeffect Obsidian Plugin
 
-Checkbox-Soundeffect is an Obsidian plugin that enhances your checkbox experience by playing a sound whenever you click a checkbox. Make your note-taking and task management more engaging with this interactive sound feature.
+Checkbox-Soundeffect is an Obsidian plugin that enhances your checkbox experience by playing a sound whenever you click a checkbox or toggle an inline boolean field. Make your note-taking and task management more interactive and engaging with sound effects.
 
 ## Supported Checklist Formats
+
 The Checkbox-Soundeffect plugin currently supports the following checklist formats:
 
 - Standard checkboxes
 - Checkboxes in a numbered list
+- Inline boolean values when integrated with the Better Inline Fields plugin
 
+## Plugin Integration: Better Inline Fields
+
+The Checkbox-Soundeffect plugin can integrate with the "Better Inline Fields" plugin to provide an even more immersive note-taking experience. Specifically, the third trigger event for sound effects can be set to work when you toggle inline boolean values (e.g., `Some Field:: false` to `Some Field:: true` and works with its checkbox feature).
+
+**How to Enable Integration**
+
+1. Make sure both the Checkbox-Soundeffect and Better Inline Fields plugins are installed and enabled.
+2. Navigate to the Checkbox-Soundeffect settings and activate the "Enable Better Inline Fields Integration" option.
+3. Configure your third sound effect trigger within the Checkbox-Soundeffect settings.
+
+Now, when you toggle an inline boolean value using Better Inline Fields, the third sound effect will be triggered, adding an auditory layer to your interactions.
 
 ## Setup
 
