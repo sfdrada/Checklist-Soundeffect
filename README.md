@@ -1,4 +1,4 @@
-https://github.com/sfdrada/Checklist-Soundeffect/assets/79337513/19c20384-f3ef-4d3d-8712-555596c792d8
+https://github.com/sfdrada/Checklist-Soundeffect/assets/79337513/6ac5f954-141d-4a1b-a785-3fdaf96ef11f
 
 # Checkbox-Soundeffect Obsidian Plugin
 
