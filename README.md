@@ -10,19 +10,15 @@ The Checkbox-Soundeffect plugin currently supports the following checklist forma
 
 - Standard checkboxes
 - Checkboxes in a numbered list
-- Inline boolean values when integrated with the Better Inline Fields plugin
+- Inline boolean values & checklists when combined with the Better Inline Fields plugin
 
 ## Plugin Integration: Better Inline Fields
 
-The Checkbox-Soundeffect plugin can integrate with the "Better Inline Fields" plugin to provide an even more immersive note-taking experience. Specifically, the third trigger event for sound effects can be set to work when you toggle inline boolean values (e.g., `Some Field:: false` to `Some Field:: true` and works with its checkbox feature).
-
+The Checkbox-Soundeffect plugin can integrate with the "Better Inline Fields" plugin to provide an even more immersive note-taking experience. Specifically, the checklists option in this plugin can have its own audio file and sound setup. 
 **How to Enable Integration**
 
 1. Make sure both the Checkbox-Soundeffect and Better Inline Fields plugins are installed and enabled.
-2. Navigate to the Checkbox-Soundeffect settings and activate the "Enable Better Inline Fields Integration" option.
-3. Configure your third sound effect trigger within the Checkbox-Soundeffect settings.
-
-Now, when you toggle an inline boolean value using Better Inline Fields, the third sound effect will be triggered, adding an auditory layer to your interactions.
+2. Update your audio file link for Inline Toggle Audio in the plugin settings.
 
 ## Setup
 
