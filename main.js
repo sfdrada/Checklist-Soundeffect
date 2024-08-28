@@ -43,8 +43,8 @@ var CheckboxSoundeffect = class extends import_obsidian.Plugin {
 
   async onload() {
     await this.loadSettings();
-    this.audio = new Audio(this.settings.audioURL);
-    this.inlineAudio = new Audio(this.settings.inlineAudioURL); // Initialize inlineAudio
+    this.audio = new Audio(this.getAudioPath(this.settings.audioURL));
+    this.inlineAudio = new Audio(this.getAudioPath(this.settings.inlineAudioURL)); // Initialize inlineAudio
 
     this.audio.volume = this.settings.checkboxVolume;
     this.inlineAudio.volume = this.settings.inlineVolume;
@@ -86,7 +86,6 @@ var CheckboxSoundeffect = class extends import_obsidian.Plugin {
     if (!(activeView instanceof import_obsidian.MarkdownView)) return null;
     return activeView.editor;
   }
-
   checkCheckboxes() {
     if (this.justSwitched) {
       this.justSwitched = false;
@@ -106,21 +105,23 @@ var CheckboxSoundeffect = class extends import_obsidian.Plugin {
     const oldUncheckedMatches = (this.previousContent.match(checkboxUncheckedRegex) || []).length;
     const newUncheckedMatches = (content.match(checkboxUncheckedRegex) || []).length;
 
-    if (oldCheckedMatches < newCheckedMatches || oldUncheckedMatches > newUncheckedMatches) {
-      this.audio.cloneNode(true).play();
-    }
-
     const oldFalseMatches = Array.from(this.previousContent.matchAll(customFalseRegex));
     const newFalseMatches = Array.from(content.matchAll(customFalseRegex));
     const oldTrueMatches = Array.from(this.previousContent.matchAll(customTrueRegex));
     const newTrueMatches = Array.from(content.matchAll(customTrueRegex));
 
+    if (oldCheckedMatches < newCheckedMatches) {
+      this.audio.cloneNode(true).play();
+    }
+
     if (oldFalseMatches.length > newFalseMatches.length && newTrueMatches.length > oldTrueMatches.length) {
       this.inlineAudio.cloneNode(true).play();
     }
 
-    this.previousContent = content; // Renamed from oldcontent for consistency
+    this.previousContent = content; // This is consistent with the original
   }
+
+
 
   onunload() {
     window.clearInterval(this.interval);
@@ -132,8 +133,12 @@ var CheckboxSoundeffect = class extends import_obsidian.Plugin {
         ...DEFAULT_SETTINGS,
         ...(await this.loadData())
       };
-      this.audio.volume = this.settings.checkboxVolume; // Update the audio volume when settings are loaded
-      this.inlineAudio.volume = this.settings.inlineVolume; // Update the inline audio volume when settings are loaded
+      if (this.audio) {
+        this.audio.volume = this.settings.checkboxVolume; // Update the audio volume when settings are loaded
+      }
+      if (this.inlineAudio) {
+        this.inlineAudio.volume = this.settings.inlineVolume; // Update the inline audio volume when settings are loaded
+      }
     } catch (error) {
       console.error("Failed to load settings:", error);
       this.settings = DEFAULT_SETTINGS;
@@ -150,11 +155,18 @@ var CheckboxSoundeffect = class extends import_obsidian.Plugin {
   }
 
   setAudioURL(url) {
-    this.audio.src = url;
+    this.audio.src = this.getAudioPath(url);
   }
 
   setInlineAudioURL(url) {
-    this.inlineAudio.src = url; // Set the source for inlineAudio
+    this.inlineAudio.src = this.getAudioPath(url); // Set the source for inlineAudio
+  }
+
+  getAudioPath(path) {
+    if (path.startsWith("http://") || path.startsWith("https://")) {
+      return path;
+    }
+    return this.app.vault.adapter.getResourcePath(path);
   }
 };
 
@@ -170,7 +182,7 @@ var CheckboxSoundeffectSettings = class extends import_obsidian.PluginSettingTab
     containerEl.empty();
     containerEl.createEl("h2", { text: "Settings for Checkbox Sound Effect Plugin" });
 
-    new import_obsidian.Setting(containerEl).setName("Audio URL").setDesc("Enter the URL for the audio file you want to play.").addText((text) => text.setPlaceholder("Enter the audio URL here").setValue(this.plugin.settings.audioURL).onChange(async (value) => {
+    new import_obsidian.Setting(containerEl).setName("Audio URL").setDesc("Enter the URL or file path for the audio file you want to play.").addText((text) => text.setPlaceholder("Enter the audio URL or file path here").setValue(this.plugin.settings.audioURL).onChange(async (value) => {
       this.plugin.settings.audioURL = value;
       this.plugin.setAudioURL(value);
       await this.plugin.saveSettings();
@@ -178,9 +190,9 @@ var CheckboxSoundeffectSettings = class extends import_obsidian.PluginSettingTab
 
     new import_obsidian.Setting(containerEl)
       .setName("Inline Toggle Audio URL")
-      .setDesc("Enter the URL for the audio file you want to play when toggling inline booleans.")
+      .setDesc("Enter the URL or file path for the audio file you want to play when toggling inline booleans.")
       .addText((text) => text
-        .setPlaceholder("Enter the inline audio URL here")
+        .setPlaceholder("Enter the inline audio URL or file path here")
         .setValue(this.plugin.settings.inlineAudioURL)
         .onChange(async (value) => {
           this.plugin.settings.inlineAudioURL = value;
@@ -192,26 +204,35 @@ var CheckboxSoundeffectSettings = class extends import_obsidian.PluginSettingTab
     new import_obsidian.Setting(containerEl)
       .setName("Checkbox Audio Volume")
       .setDesc("Set the volume for checkbox audio (0.0 to 1.0)")
-      .addSlider(slider => slider
-        .setLimits(0, 1, 0.1)
-        .setValue(this.plugin.settings.checkboxVolume)
-        .onChange(async (value) => {
-          this.plugin.settings.checkboxVolume = value;
-          this.plugin.setCheckboxVolume(value);
-          await this.plugin.saveSettings();
-        }));
+      .addSlider(slider => {
+        slider
+          .setLimits(0, 1, 0.1)
+          .setValue(this.plugin.settings.checkboxVolume)
+          .onChange(async (value) => {
+            this.plugin.settings.checkboxVolume = value;
+            this.plugin.setCheckboxVolume(value);
+            await this.plugin.saveSettings();
+            volumeDisplay.setText(`Current Volume: ${value.toFixed(1)}`);
+          });
+        const volumeDisplay = containerEl.createEl('div', { text: `Current Volume: ${this.plugin.settings.checkboxVolume.toFixed(1)}` });
+      });
 
     new import_obsidian.Setting(containerEl)
       .setName("Inline Toggle Audio Volume")
       .setDesc("Set the volume for inline toggle audio (0.0 to 1.0)")
-      .addSlider(slider => slider
-        .setLimits(0, 1, 0.1)
-        .setValue(this.plugin.settings.inlineVolume)
-        .onChange(async (value) => {
-          this.plugin.settings.inlineVolume = value;
-          this.plugin.setInlineVolume(value);
-          await this.plugin.saveSettings();
-        }));
+      .addSlider(slider => {
+        slider
+          .setLimits(0, 1, 0.1)
+          .setValue(this.plugin.settings.inlineVolume)
+          .onChange(async (value) => {
+            this.plugin.settings.inlineVolume = value;
+            this.plugin.setInlineVolume(value);
+            await this.plugin.saveSettings();
+            inlineVolumeDisplay.setText(`Current Volume: ${value.toFixed(1)}`);
+          });
+        const inlineVolumeDisplay = containerEl.createEl('div', { text: `Current Volume: ${this.plugin.settings.inlineVolume.toFixed(1)}` });
+        containerEl.createEl('br'); // Add a newline separator
+      });
 
   }
 };
