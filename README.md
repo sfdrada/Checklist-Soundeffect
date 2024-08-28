@@ -18,7 +18,7 @@ To use the Checkbox-Soundeffect plugin, follow these steps:
 
 1. **Upload Your Audio File**
 
-   Before you start, make sure you have an MP3 audio file that you want to use as the sound effect. To upload the audio file, we recommend using Discord, but Telegram can also work.
+   Before you start, make sure you have an MP3 audio file that you want to use as the sound effect. To upload the audio file, we recommend using Discord, but Telegram can also work. Local files also work by providing the path in the audio link fields.
 
    - **Discord:**
      - Join a server or create a new one if you don't have any.
